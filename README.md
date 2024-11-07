@@ -31,15 +31,18 @@ To pull this project using HTTP or SSH, use the following commands:
 
 ### Using HTTP
 
-1. Clone the repository using this command:
+*Clone the repository using this command:*
  bash
+ ```
  git clone https://github.com/Martirosyan-Davit/Social-website.git
+ ```
 
 ### Using SSH
-1. Clone the repository using the SSH command:
-git clone git@github.com:Martirosyan-Davit/Social-website.git
-
-These commands will download a copy of the project to your local machine, allowing you to work with it in your development environment.
+ *Clone the repository using the SSH command:*  
+ ```
+ git clone git@github.com:Martirosyan-Davit/Social-website.git
+ ```
+*These commands will download a copy of the project to your local machine, allowing you to work with it in your development environment.*
 
 ## Project setup
 
