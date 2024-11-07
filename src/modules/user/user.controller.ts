@@ -14,6 +14,7 @@ import { UserService } from './user.service';
 import {
   ApiAcceptedResponse,
   ApiBearerAuth,
+  ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -29,9 +30,13 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Get()
+  @ApiOperation({
+    summary: 'Get all users',
+    description: 'Get users whit pagination',
+  })
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
-    description: 'Get users whit pagination',
+    status: HttpStatus.OK,
     type: PageDto,
   })
   async getAll(
@@ -41,10 +46,12 @@ export class UserController {
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Get user by id',
+  })
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Get user by id',
     type: UserDto,
   })
   async getOne(@Param('id') userId: string): Promise<UserDto> {
@@ -52,10 +59,13 @@ export class UserController {
   }
 
   @Put()
+  @ApiOperation({
+    summary: 'Update user',
+  })
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.ACCEPTED)
   @ApiAcceptedResponse({
-    description: 'Update user',
+    description: 'Updated user',
   })
   @ApiBearerAuth()
   async update(

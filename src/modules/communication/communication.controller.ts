@@ -15,6 +15,7 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -34,10 +35,12 @@ export class CommunicationController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({
+    summary: 'Sends a follow request.',
+  })
   @HttpCode(HttpStatus.ACCEPTED)
   @ApiCreatedResponse({
     type: CommunicationDto,
-    description: 'Sends a follow request.',
   })
   @ApiBearerAuth()
   async sendFollowRequest(
@@ -51,11 +54,13 @@ export class CommunicationController {
   }
 
   @Patch(':id/respond')
+  @ApiOperation({
+    summary: 'Accepts or declines a follow request.',
+  })
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     type: CommunicationDto,
-    description: 'Accepts or declines a follow request.',
   })
   @ApiBearerAuth()
   async respondToFollowRequest(
@@ -71,10 +76,12 @@ export class CommunicationController {
   }
 
   @Get('my')
+  @ApiOperation({
+    summary: 'Get user follow  whit pagination',
+  })
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
-    description: 'Get user follow  whit pagination',
     type: PageDto,
   })
   @ApiBearerAuth()
@@ -89,11 +96,13 @@ export class CommunicationController {
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Get follow by id',
+  })
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Get follow by id',
     type: CommunicationDto,
   })
   @ApiBearerAuth()
