@@ -44,6 +44,8 @@ To pull this project using HTTP or SSH, use the following commands:
  ```
 *These commands will download a copy of the project to your local machine, allowing you to work with it in your development environment.*
 
+### Attention
+ *!Copy file .env.example in .env and put your credentials for a successful launch*
 ## Project setup
 
 ```bash
